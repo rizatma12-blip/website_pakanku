@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Panganku - Nikmati Makanan Favoritmu</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefaf5;
+      color: #2d2a24;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header / navbar */
+    header {
+      background: white;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #e67e22, #d35400);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .logo span {
+      color: #e67e22;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #3b3228;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #e67e22;
+    }
+
+    .btn-outline {
+      border: 1.5px solid #e67e22;
+      padding: 8px 20px;
+      border-radius: 40px;
+      background: transparent;
+      font-weight: 600;
+    }
+
+    .btn-outline:hover {
+      background: #e67e22;
+      color: white !important;
+    }
+
+    .btn-primary {
+      background: #e67e22;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: 0.2s;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(230,126,34,0.3);
+    }
+
+    .btn-primary:hover {
+      background: #cf711f;
+      transform: translateY(-2px);
+    }
+
+    /* Hero section */
+    .hero {
+      padding: 70px 0 60px;
+    }
+
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-badge {
+      background: #ffe8db;
+      color: #e67e22;
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #2c241a;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #5a4a38;
+      margin-bottom: 32px;
+      max-width: 90%;
+    }
+
+    .hero-image {
+      flex: 1;
+      background: linear-gradient(145deg, #ffeedd, #ffe3d0);
+      border-radius: 48px;
+      padding: 20px;
+      text-align: center;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+    }
+
+    .hero-image i {
+      font-size: 12rem;
+      color: #e67e22;
+      opacity: 0.8;
+    }
+
+    /* Features */
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 48px;
+      color: #2c241a;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin: 40px 0 60px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 32px;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+      transition: 0.25s ease;
+      border: 1px solid #ffeee3;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px -12px rgba(230,126,34,0.15);
+      border-color: #ffe0cd;
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: #e67e22;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    /* How it works */
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin: 40px 0 60px;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+      background: #fff7f0;
+      padding: 24px;
+      border-radius: 40px;
+    }
+
+    .step-number {
+      background: #e67e22;
+      color: white;
+      width: 48px;
+      height: 48px;
+      font-size: 1.6rem;
+      font-weight: bold;
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    /* Testimonials */
+    .testimonial-grid {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin: 40px 0 40px;
+    }
+
+    .testi-card {
+      background: white;
+      padding: 28px;
+      border-radius: 32px;
+      flex: 1;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+      border-left: 6px solid #e67e22;
+    }
+
+    .testi-text {
+      font-style: italic;
+      margin-bottom: 16px;
+      color: #3a3228;
+    }
+
+    .testi-name {
+      font-weight: 700;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(115deg, #ffebdb, #ffe0cd);
+      border-radius: 48px;
+      margin: 60px 0;
+      padding: 60px 32px;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+
+    .cta-section .btn-primary {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      padding: 14px 36px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      border-top: 1px solid #f0e2d4;
+      color: #7e6b58;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .hero-content p {
+        max-width: 100%;
+      }
+      nav {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+      .hero-grid {
+        flex-direction: column-reverse;
+      }
+      .hero-image i {
+        font-size: 7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">panganku<span>.</span></div>
+      <div class="nav-links">
+        <a href="#">Beranda</a>
+        <a href="#features">Fitur</a>
+        <a href="#cara">Cara Pakai</a>
+        <a href="#testi">Ulasan</a>
+        <a href="#" class="btn-outline">Masuk</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">✨ #1 Kuliner Digital 2025</div>
+        <h1>Panganku – <br> Nikmati Setiap Suapan, <br> Tanpa Repot</h1>
+        <p>Temukan ribuan pilihan makanan favorit dari restoran terdekat, pesan dalam hitungan detik, dan rasakan kelezatan sejati.</p>
+        <a href="#" class="btn-primary"><i class="fas fa-utensils"></i> Mulai Jelajahi →</a>
+        <p style="margin-top: 20px; font-size: 0.85rem;">✅ Gratis ongkir untuk pesanan pertama</p>
+      </div>
+      <div class="hero-image">
+        <i class="fas fa-hamburger"></i>
+        <!-- mockup ilustrasi makanan -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Features section -->
+  <div class="container" id="features">
+    <h2 class="section-title">Mengapa <span style="color:#e67e22">Panganku</span>?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-brain"></i></div>
+        <h3>Rekomendasi Pintar</h3>
+        <p>AI kami belajar dari seleramu, rekomendasi makin pas setiap hari.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Pengiriman Ekspres</h3>
+        <p>Siap antar dalam 30 menit. Hangat dan cepat sampai tujuan.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-wallet"></i></div>
+        <h3>Pembayaran Mudah</h3>
+        <p>Cashless, COD, QRIS, atau dompet digital sesuai keinginanmu.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- How it works / Wireframe langkah -->
+  <div class="container" id="cara">
+    <h2 class="section-title">Cara Kerja Panganku</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Cari & Pilih</h3>
+        <p>Gunakan filter rasa, harga, atau lokasi untuk menemukan hidangan favorit.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Pesan & Bayar</h3>
+        <p>Klik pesan, pilih metode bayar, selesai dalam 1 menit.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Lacak & Santap</h3>
+        <p>Pantau kurir secara realtime dan nikmati makananmu.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="container" id="testi">
+    <h2 class="section-title">Apa Kata Penggemar <span style="color:#e67e22">Panganku</span>?</h2>
+    <div class="testimonial-grid">
+      <div class="testi-card">
+        <div class="testi-text">"Pengiriman super cepat! Makanan tetap panas, rasanya autentik. Aplikasi jadi andalan sehari-hari."</div>
+        <div class="testi-name">— Amanda, Mahasiswa</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-text">"Rekomendasi Panganku selalu sesuai lidah saya. Tidak perlu bingung lagi kalau mau pesan makan siang."</div>
+        <div class="testi-name">— Bagas, Freelancer</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-text">"Pilihan restoran banyak & promo menarik. Fitur favorit: pesan terjadwal untuk rapat kantor."</div>
+        <div class="testi-name">— Citra, Manajer</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="container">
+    <div class="cta-section">
+      <h2>Siap menikmati makanan terbaik?</h2>
+      <p>Bergabunglah dengan 50.000+ penggemar kuliner yang sudah merasakan kemudahan Panganku.</p>
+      <a href="#" class="btn-primary"><i class="fas fa-download"></i> Download Aplikasi</a>
+      <p style="margin-top: 20px; font-size: 0.85rem;">Tersedia di Play Store & App Store (segera)</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Panganku - Solusi Cerdas Untuk Segala Lapar. Made with <i class="fas fa-heart" style="color:#e67e22"></i> untuk pecinta makanan.</p>
+  </div>
+</footer>
+
+<!-- sedikit interaksi smooth scroll -->
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if(target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
